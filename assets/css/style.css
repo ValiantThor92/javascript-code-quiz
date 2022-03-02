@@ -1,0 +1,12 @@
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+    margin-top: 10px;
+}

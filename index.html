@@ -14,18 +14,17 @@
         <h1>JavaScript Code Quiz</h1>
     </header>
 
-    <div>
-        <button id="start-quiz" class="btn btn-outline-success">Start Quiz!</button>
-    </div>
-
-
     <section class="border-secondary rounded" id="card">
-
         <div id="card-header">
-
+            <button type="button" class="btn btn-outline-primary" id="high-score">Code Quiz Champions</button>
+            <div id="timer-name">Time: </div id="timer"></div></div>
+            <button id="start-quiz" class="btn btn-outline-success">Start Quiz!</button>
         </div>
 
-        <form id="quiz">
+        <form id="quiz-form">
+
+            <p id="questions"></p>
+            
             <input type ="radio" class="radio" id="answer1" name="answer" value="answer1">
             <label for ="answer1" id="answer1Label"></label>
             <input type ="radio" class="radio" id="answer2" name="answer" value="answer2">
@@ -37,7 +36,7 @@
         </form>
 
         <div>
-            <button id="user-input" class="btn btn-primary" type="button">Enter Answer</button>
+            <button id="user-answer" class="btn btn-primary" type="button">Enter Answer</button>
         </div>
 
     </section>

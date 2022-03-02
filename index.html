@@ -5,20 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Document</title>
+    <title>JavaScript Code Quiz</title>
 </head>
 
-<body>
+<body class ="bg-dark text-light">
+    
+    <header>
+        <h1>JavaScript Code Quiz</h1>
+    </header>
 
-<script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous">
-</script>
+    <section>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <form id="quiz">
+            <input type ="radio" class="radio" id="answer1" name="answer" value="answer1">
+            <label for ="answer1" id="answer1Label"></label>
+            <input type ="radio" class="radio" id="answer2" name="answer" value="answer2">
+            <label for ="answer2" id="answer2Label"></label>
+            <input type ="radio" class="radio" id="answer3" name="answer" value="answer3">
+            <label for ="answer3" id="answer3Label"></label>
+            <input type ="radio" class="radio" id="answer4" name="answer" value="answer4">
+            <label for ="answer4" id="answer4Label"></label>
+        </form>
 
-<script src="./assets/js/questions.js"></script>
+        <div>
+            <button id="user-input" class="btn btn-primary" type="button">Enter Answer</button>
+        </div>
+
+    </section>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 <script src="./assets/js/script.js"></script>
 
 

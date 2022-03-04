@@ -18,3 +18,7 @@ var answerArray = [
     [],
     [],
 ];
+
+function startQuiz(){
+    
+}

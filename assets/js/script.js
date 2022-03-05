@@ -17,19 +17,36 @@ restartBtn.setAttribute("class", "btn btn-outline-success");
 restartBtn.setAttribute("type", "button");
 
 var questionArray = [
-    [],
-    [],
-    [],
-    [],
+    "Inside which HTML element do we put the JavaScript?",
+    "Where is the correct place to insert a JavaScript?",
+    "What is the correct syntax for referring to an external script called `xxx.js`?",
+    "The external JavaScript file must contain the <script> tag."
 ];
 
 var answerArray = [
-    [],
-    [],
-    [],
-    [],
+    ["<scripting>", "<javascript>", "<script>", "<js>"],
+    ["The <head> section", "both the <head> section and the <body> section are correct", "the <body> section", "A <p> element"],
+    ["<script name=`xxx.js`", "<script src=`xxx.js`>", "<script href=`xxx.js`>", "<script rel=`xxx.js`"],
+    ["true", "false"],
 ];
 
+var countdown;
+var timer = 120;
+var q = 0;
+var game = false;
+var playerScore;
+
 function startQuiz(){
-    
+    if(!game){
+    highScoreBtn.setAttribute("style", "display: none");
+    game = true;
+    q = 0;
+    timer = 120;
+    startBtn.setAttribute("style", "display: none");
+    quizForm.setAttribute("style", "display: inline");
+    timerDisplay.textContent = timer;
+    startTimer();
+    }
+
+
 }

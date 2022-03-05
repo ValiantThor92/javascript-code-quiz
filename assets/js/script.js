@@ -36,17 +36,43 @@ var q = 0;
 var game = false;
 var playerScore;
 
-function startQuiz(){
-    if(!game){
-    highScoreBtn.setAttribute("style", "display: none");
-    game = true;
-    q = 0;
-    timer = 120;
-    startBtn.setAttribute("style", "display: none");
-    quizForm.setAttribute("style", "display: inline");
-    timerDisplay.textContent = timer;
-    startTimer();
+function startQuiz() {
+
+    if(!game) {
+        highScoreBtn.setAttribute("style", "display: none");
+        game = true;
+        q = 0;
+        timer = 120;
+
+        startBtn.setAttribute("style", "display: none");
+        quizForm.setAttribute("style", "display: inline");
+        timerDisplay.textContent = timer;
+
+        startTimer();
+    }
+    
+    if(q < questionArray.length) {
+
+        question.textContent = questionArray[q];
+
+        for(var i=0; i < allRadios.length; i++) {
+            allLabels.item(i).textContent = answerArray[q][i];
+            if(answerArray[q][i] === answerArray[q][4]) {
+                allRadios.item(i).setAttribute("value", "correct");
+            }
+            
+            else {
+                allRadios.item(i).setAttribute("value", "incorrect");
+            }
+
+        }
+
+        userAnswer.addEventListener("click", checkAnswer);
+
     }
 
+    else {
+        endGame(true);
+    }
 
-}
+};

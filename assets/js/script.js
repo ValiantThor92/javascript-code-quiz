@@ -110,3 +110,30 @@ function endGame(win) {
     }
 
 };
+
+function checkAnswer() {
+
+    if(quizForm.answer.value === "correct") {
+        q++;
+        startQuiz();
+    }
+
+    else {
+
+        timer -= 10;
+        document.getElementById("user-answer").setAttribute("class", "btn btn-danger")
+        
+        var flashRed = setTimeout(function() {
+
+            document.getElementById("user-answer").setAttribute("class", "btn btn-primary")
+
+        }, 250)
+
+    }
+
+}
+
+function startTimer() {
+
+}
+

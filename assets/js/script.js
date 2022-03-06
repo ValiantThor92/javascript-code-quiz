@@ -1,12 +1,12 @@
 var startBtn = document.getElementById("start-quiz");
-var quiz = document.getElementById("quiz");
+var cardPointer = document.getElementById("quiz");
 var quizForm = document.getElementById("quiz-form");
 
 var question = document.getElementById("question");
 var userAnswer = document.getElementById("user-Answer");
 var questions = document.getElementById("questions");
 
-var timer = document.getElementById("timer");
+var timerDisplay = document.getElementById("timer");
 
 var highScoreForm = document.getElementById("high-score-form");
 var highScoreBtn = document.getElementById("high-score")
@@ -24,18 +24,33 @@ restartBtn.setAttribute("class", "btn btn-outline-success");
 restartBtn.setAttribute("type", "button");
 
 var questionArray = [
-    "Inside which HTML element do we put the JavaScript?",
-    "Where is the correct place to insert a JavaScript?",
-    "What is the correct syntax for referring to an external script called `xxx.js`?",
-    "The external JavaScript file must contain the <script> tag."
+    {
+        prompt: "Inside which HTML element do we put the JavaScript?",
+        choices: ["<scripting>", "<javascript>", "<script>", "<js>"],
+        answer: "<script>"
+    },
+
+    {
+        prompt: "Where is the correct place to insert the JavaScript?",
+        choices: ["The <head> section", "both the <head> section and the <body> section are correct", "the <body> section", "A <p> element"],
+        answer: "the <body> section" 
+    },
+
+    {
+        prompt: "What is the correct syntax for referring to an external script called `xxx.js`?",
+        choices: ["<script name=`xxx.js`", "<script src=`xxx.js`>", "<script href=`xxx.js`>", "<script rel=`xxx.js`"],
+        answer:  "<script src=`xxx.js`>"
+    },
+
+    {
+        prompt: "The external JavaScript file must contain the <script> tag.",
+        choices: ["true", "false"],
+        answer: "false"
+    }
+
 ];
 
-var answerArray = [
-    ["<scripting>", "<javascript>", "<script>", "<js>", "</script>"],
-    ["The <head> section", "both the <head> section and the <body> section are correct", "the <body> section", "A <p> element", "the <body> section" ],
-    ["<script name=`xxx.js`", "<script src=`xxx.js`>", "<script href=`xxx.js`>", "<script rel=`xxx.js`", "<script src=`xxx.js`>"],
-    ["true", "false", "false"],
-];
+
 
 var countdown;
 var timer = 120;
@@ -113,18 +128,17 @@ function endGame(win) {
 
 function checkAnswer() {
 
+     //If the user's answer is correct, increment q and call the startQuiz main function, which will load the next question
     if(quizForm.answer.value === "correct") {
         q++;
         startQuiz();
     }
 
     else {
-
         timer -= 10;
         document.getElementById("user-answer").setAttribute("class", "btn btn-danger")
-        
-        var flashRed = setTimeout(function() {
 
+        var flashRed = setTimeout(function() {
             document.getElementById("user-answer").setAttribute("class", "btn btn-primary")
 
         }, 250)
@@ -135,5 +149,89 @@ function checkAnswer() {
 
 function startTimer() {
 
+    countdown = setInterval(() => {
+        timer--;
+        timerDisplay.textContent = timer;
+
+        if(timer <= 0) {
+            clearInterval(countdown);
+            timer = 0;
+            timerDisplay.textContent = timer;
+            endGame(false);
+
+        }
+
+    }, 1000);
+
 }
+
+function postScore() {
+    // stores user input [key] and score [value] in local storage
+    localStorage.setItem(highScoreForm.pname.value, playerScore);
+    // reload page to try again or check highscores
+    location.reload();
+}
+
+function loadHighScoreTable() {
+    document.getElementById("timer-name").setAttribute("style", "display: none");
+
+    // fetch scores from local storage
+    var allHighScores = {...localStorage};
+    var orderedHighScores = [];
+
+    // for/in loop to iterate through the object properties and create key:value array
+    for (var scores in allHighScores) {
+        orderedHighScores.push([scores, allHighScores[scores]]);
+
+    }
+
+    // sorts scores in ascending order
+    orderedHighScores.sort(function(a, b) {
+        return a[1] - b[1];
+    });
+
+    // hide start and highScoreBtn
+    startBtn.setAttribute("style", "display: none");
+    highScoreBtn.setAttribute("style", "display: none");
+
+    // append the high scores h2
+    endScreenHeader.textContent = "High Scores";
+    cardPointer.append(endScreenHeader);
+
+    // initiate counter at 1
+    var k = 1
+    
+    // iterate backwards to list highest first
+    for(var i = orderedHighScores.length-1; i >= 0; i--) {
+
+        // limits high score list to 5 inputs
+        if(k < 6) {
+            // create <p> element and add player name and score
+            var j = document.createElement("p");
+            j.textContent = k + orderedHighScores[i][0] + orderedHighScores[i][1];
+
+             // add bootstrapping to <p> element
+            j.setAttribute("class", "border m1 rounded border-success");
+            //  append <p> element to high score table
+            cardPointer.append(j);
+
+            k++;
+
+        }
+
+    }
+
+    restartBtn.textContent = "Go back";
+    cardPointer.append(restartBtn);
+
+}
+
+// event listeners for highscore, start quiz btn, and restart button(or go back)
+
+highScoreBtn.addEventListener("click", loadHighScoreTable);
+startBtn.addEventListener("click", startQuiz);
+restartBtn.addEventListener("click", function() {
+    location.reload();
+
+});
 

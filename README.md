@@ -32,7 +32,7 @@ this project was created with javascript and tests the user on javascript knowle
 
 ## Screenshots
 
-<img src="./assets/screenshots/codequiz.png">
+<img src="./assets/screenshots/javascript-code-quiz.jpg">
 
 
 ## Link

@@ -18,17 +18,17 @@ THEN I can save my initials and score<br />
     -css <br />
       -style.css <br />
     -js <br />
-      -score.js
-      -script.js
+      -score.js<br />
+      -script.js<br />
     -screenshots <br />
-      -codequiz.png
+      -codequiz.png<br />
     -index.html <br />
     -highscore.html <br />
     -README.md <br />
 
 ## Project Notes
 
-this project was created with javascript and tests the user on javascript knowledge
+this project was created with javascript and web APIs, and tests the user on javascript knowledge
 
 ## Screenshots
 

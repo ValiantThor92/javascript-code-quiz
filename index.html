@@ -13,31 +13,24 @@
 <body class ="bg-dark text-light">
 
     <header>
-        <h1>JavaScript Code Quiz</h1>
+        <a href="highscore.html" class="noDecoration"><li class="nav" id="high-scores">Check Out Your HighScores!!</li></a>
+        <li class="nav" id="timer">Time Left: &nbsp;<span id="countdown"></span></li>
     </header>
 
     <section class="border-secondary rounded" id="card">
+
         <div id="card-header">
             <button type="button" class="btn btn-outline-success" id="high-score">Code Quiz Champions</button>
             <div id="timer-name">Time: </div id="timer"></div></div>
         </div>
+
         <article id ="quiz">
 
             <form id="quiz-form">
 
                 <p id="questions"></p>
-                <div id="radios">
 
-                    <input type ="radio" class="radio" id="answer1" name="answer" value="answer1">
-                    <label for ="answer1" id="answer1Label"></label>
-                    <input type ="radio" class="radio" id="answer2" name="answer" value="answer2">
-                    <label for ="answer2" id="answer2Label"></label>
-                    <input type ="radio" class="radio" id="answer3" name="answer" value="answer3">
-                    <label for ="answer3" id="answer3Label"></label>
-                    <input type ="radio" class="radio" id="answer4" name="answer" value="answer4">
-                    <label for ="answer4" id="answer4Label"></label>
-                    
-                </div> 
+
 
             <div>
                 <button id="user-answer" class="btn btn-primary" type="button">Enter Answer</button>

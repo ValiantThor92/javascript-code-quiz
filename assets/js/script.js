@@ -11,8 +11,8 @@ var timerDisplay = document.getElementById("timer");
 var highScoreForm = document.getElementById("high-score-form");
 var highScoreBtn = document.getElementById("high-score")
 
-var allRadios = document.getElementById("answer");
-var allLabels = document.getElementById("radios").querySelectorAll("label");
+
+
 
 var endScreenHeader = document.createElement("h2");
 var endScreen = document.createElement("p");
@@ -24,6 +24,7 @@ restartBtn.setAttribute("class", "btn btn-outline-success");
 restartBtn.setAttribute("type", "button");
 
 var questionArray = [
+
     {
         prompt: "Inside which HTML element do we put the JavaScript?",
         choices: ["<scripting>", "<javascript>", "<script>", "<js>"],
@@ -58,44 +59,9 @@ var q = 0;
 var game = false;
 var playerScore;
 
-function startQuiz() {
+var startQuiz = function() {
 
-    if(!game) {
-        highScoreBtn.setAttribute("style", "display: none");
-        game = true;
-        q = 0;
-        timer = 120;
 
-        startBtn.setAttribute("style", "display: none");
-        quizForm.setAttribute("style", "display: inline");
-        timerDisplay.textContent = timer;
-
-        startTimer();
-    }
-    
-    if(q < questionArray.length) {
-
-        question.textContent = questionArray[q];
-
-        for(var i=0; i < allRadios.length; i++) {
-            allLabels.item(i).textContent = answerArray[q][i];
-            if(answerArray[q][i] === answerArray[q][4]) {
-                allRadios.item(i).setAttribute("value", "correct");
-            }
-            
-            else {
-                allRadios.item(i).setAttribute("value", "incorrect");
-            }
-
-        }
-
-        userAnswer.addEventListener("click", checkAnswer);
-
-    }
-
-    else {
-        endGame(true);
-    }
 
 };
 

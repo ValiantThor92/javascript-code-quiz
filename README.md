@@ -32,7 +32,7 @@ this project was created with javascript and web APIs, and tests the user on jav
 
 ## Screenshots
 
-<img src="./assets/screenshots/javascript-code-quiz.jpg">
+<img src="./assets/screenshots/javascript-code-quiz.JPG">
 
 
 ## Link
